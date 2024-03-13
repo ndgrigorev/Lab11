@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab10_Library
 {
-    public class Mammals : Animals, IInit
+    public class Mammals : Animals, IInit, IComparable
     {
         protected double weight;
 
@@ -74,6 +74,18 @@ namespace Lab10_Library
             else
             {
                 return false;
+            }
+        }
+        public override int CompareTo(object obj)
+        {
+            if (obj == null) return -1;
+            if (obj is Mammals animals)
+            {
+                return string.Compare(Name, animals.Name);
+            }
+            else
+            {
+                return -1;
             }
         }
         public Animals GetBase()
